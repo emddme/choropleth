@@ -6,7 +6,9 @@
   align-items: center;
 }
 .county,
-.nation {
+.nation,
+.state {
   fill: none;
   stroke: black;
+  stroke-width: 0.25;
 }

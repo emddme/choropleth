@@ -1,45 +1,34 @@
-import * as v from "./variables.js";
-import * as f from "./functions.js";
+import {getStatic, fetchData, draw} from "./functions"
+import {topoURL_static, educationURL_static, topoURL, educationURL, svgWidth, svgHeight} from "./variables"
 
-//get static data
-const eduStatic = await fetch(v.educationURL_static)
-  .then((res) => res.json())
-  .then((res) => res);
+const topoStatic = await getStatic(topoURL_static);
+const eduStatic = await getStatic(educationURL_static);
 
-const topoStatic = await fetch(v.topoURL_static)
-  .then((res) => res.json())
-  .then((res) => res);
+//get svg borders
+const bb = topoStatic.bbox;
 
-//create path
-const path = d3.geoPath();
-
-//convert to features
+//convert data to features
 const nation = topojson.feature(topoStatic, topoStatic.objects.nation).features;
-
+const states = topojson.feature(topoStatic, topoStatic.objects.states).features;
 const counties = topojson.feature(
   topoStatic,
   topoStatic.objects.counties
 ).features;
 
-const bb = topoStatic.bbox;
 
 //create SVG
-const svg = d3
+d3
   .select("#app")
   .append("svg")
-  .attr("width", v.width)
-  .attr("height", v.height)
+  .attr("width", svgWidth)
+  .attr("height", svgHeight)
   .attr("viewBox", `${bb[0]} ${bb[1]} ${bb[2]} ${bb[3]}`);
 
-svg
-  .selectAll(".nation")
-  .data(nation)
-  .enter()
-  .append("path")
-  .classed("nation", true)
-  .attr("d", path);
+draw(nation, "nation");
+draw(states, "state")
+draw(counties, "county");
 
-console.log(eduStatic);
-console.log(topoStatic);
-console.log(counties);
-console.log(path);
+
+  console.log(nation);
+  console.log(states);
+  console.log(counties);
