@@ -1,6 +1,6 @@
 //get static data (local)
 export const getStatic = async (URL) => {
-  const data = null;
+  let data = null;
   await fetch(URL)
   .then((res) => res.json())
   .then((res) => data = res);
@@ -18,10 +18,21 @@ export const fetchData = (URL) => {
   req.send(null);
 };
 
+//create SVG
+export const createSVG = (width, height, viewBox) => {
+  const svg = d3
+  .select("#app")
+  .append("svg")
+  .attr("width", width)
+  .attr("height", height)
+  .attr("viewBox", `${viewBox[0]} ${viewBox[1]} ${viewBox[2]} ${viewBox[3]}`);
+  return svg
+}
+
 //draw geo
-export const draw = (featuresCollection, collectionName) => {
+export const draw = (target, featuresCollection, collectionName) => {
   const path = d3.geoPath();
-  d3
+  target
   .selectAll(`.${collectionName}`)
   .data(featuresCollection)
   .enter()
