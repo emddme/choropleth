@@ -18,6 +18,26 @@ export const fetchData = (URL) => {
   req.send(null);
 };
 
+//convert data to featuresCollection
+export const convert = (topologyObject, geocollectionObject) => {
+  const result = topojson.feature(
+    topologyObject,
+    topologyObject.objects[geocollectionObject]
+  ).features;
+  return result;
+};
+
+//combine geofeatures and statistics
+export const combine = (featuresCollection, statisticsCollection, scale) => {
+  featuresCollection.map((k, i) => {
+    k.properties.fips = statisticsCollection[i].fips;
+    k.properties.state = statisticsCollection[i].state;
+    k.properties.county = statisticsCollection[i].area_name;
+    k.properties.higherEd = statisticsCollection[i].bachelorsOrHigher;
+    k.properties.color = scale(statisticsCollection[i].bachelorsOrHigher);
+  });
+};
+
 //create SVG
 export const createSVG = (width, height, viewBox) => {
   const svg = d3
@@ -43,5 +63,6 @@ export const draw = (target, featuresCollection, collectionName) => {
     .attr("state", (d) => d.properties.state)
     .attr("county", (d) => d.properties.county)
     .attr("higherEd", (d) => d.properties.higherEd)
-    .attr("d", path);
+    .attr("d", path)
+    .style("fill", (d) => d.properties.color);
 };
