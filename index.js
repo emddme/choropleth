@@ -7,6 +7,7 @@ import {
   createSVG,
   drawMap,
   colorScale,
+  drawLegend,
 } from "./functions.js";
 import {
   topoURL_static,
@@ -16,6 +17,12 @@ import {
   title,
   description,
   viewBox,
+  legendOffset,
+  rectOffset,
+  rectSize,
+  legendValues,
+  legendTexts,
+  textOffset,
 } from "./variables.js";
 
 //get data
@@ -37,7 +44,19 @@ combine(counties, eduStatic, scale);
 insertTitleDescription("#app", title, description);
 
 //create svg and draw geometries
-const svg = createSVG(viewBox);
-drawMap(svg, nation, "nation");
-drawMap(svg, states, "state");
-drawMap(svg, counties, "county");
+const svg = createSVG(viewBox, "map");
+drawMap("#map", nation, "nation");
+drawMap("#map", states, "state");
+drawMap("#map", counties, "county");
+
+//insert legend
+drawLegend(
+  "#map",
+  legendOffset,
+  rectOffset,
+  rectSize,
+  scale,
+  legendValues,
+  legendTexts,
+  textOffset
+);

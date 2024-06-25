@@ -27,6 +27,6 @@ body {
 .nation,
 .state {
   fill: none;
-  stroke: white;
+  /* stroke: white; */
   stroke-width: 0.25;
 }
