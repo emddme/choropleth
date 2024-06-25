@@ -33,24 +33,38 @@ export const combine = (featuresCollection, statisticsCollection, scale) => {
     k.properties.fips = statisticsCollection[i].fips;
     k.properties.state = statisticsCollection[i].state;
     k.properties.county = statisticsCollection[i].area_name;
-    k.properties.higherEd = statisticsCollection[i].bachelorsOrHigher;
+    k.properties.bachelorsOrHigher = statisticsCollection[i].bachelorsOrHigher;
     k.properties.color = scale(statisticsCollection[i].bachelorsOrHigher);
   });
 };
 
+// define color scale
+export const colorScale = (statObject) => {
+  const scale = d3
+    .scaleSequential()
+    .domain(d3.extent(statObject.map((k) => k.bachelorsOrHigher)))
+    .interpolator(d3.interpolateMagma);
+  return scale;
+};
+
 //create SVG
-export const createSVG = (width, height, viewBox) => {
+export const createSVG = (viewBox) => {
   const svg = d3
     .select("#app")
     .append("svg")
-    .attr("width", width)
-    .attr("height", height)
-    .attr("viewBox", `${viewBox[0]} ${viewBox[1]} ${viewBox[2]} ${viewBox[3]}`);
+    .attr("id", "map")
+    .attr("viewBox", viewBox);
   return svg;
 };
 
+//insert title and description
+export const insertTitleDescription = (target, title, description) => {
+  d3.select(target).append("h1").attr("id", "title").text(title);
+  d3.select(target).append("h3").attr("id", "description").text(description);
+};
+
 //draw geo
-export const draw = (target, featuresCollection, collectionName) => {
+export const drawMap = (target, featuresCollection, collectionName) => {
   const path = d3.geoPath();
   target
     .selectAll(`.${collectionName}`)
@@ -59,10 +73,10 @@ export const draw = (target, featuresCollection, collectionName) => {
     .append("path")
     .classed(collectionName, true)
     .attr("id", (d) => d.id)
-    .attr("fips", (d) => d.properties.fips)
+    .attr("data-fips", (d) => d.properties.fips)
     .attr("state", (d) => d.properties.state)
     .attr("county", (d) => d.properties.county)
-    .attr("higherEd", (d) => d.properties.higherEd)
+    .attr("data-education", (d) => d.properties.bachelorsOrHigher)
     .attr("d", path)
     .style("fill", (d) => d.properties.color);
 };

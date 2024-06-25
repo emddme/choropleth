@@ -1,14 +1,32 @@
+@font-face {
+  font-family: "Source Code Pro", monospace;
+  font-stretch: 100%;
+  font-style: NORMAL;
+  font-weight: 200;
+  src: url("https://fonts.googleapis.com/css2?family=Source+Code+Pro:ital,wght@0,200..900;1,200..900&display=swap")
+    format("variable");
+}
+body {
+  width: 100%;
+  margin: 0;
+  background-color: #b4c3db;
+}
 #app {
-  width: 100vw;
-  height: 90vh;
+  max-width: 100%;
+  font: 1vw Source Code Pro;
   display: flex;
+  flex-direction: column;
   justify-content: center;
   align-items: center;
+}
+#map {
+  max-width: 100%;
+  padding: 1%;
 }
 .county,
 .nation,
 .state {
   fill: none;
-  stroke: black;
+  stroke: white;
   stroke-width: 0.25;
 }

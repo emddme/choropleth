@@ -3,16 +3,19 @@ import {
   fetchData,
   convert,
   combine,
+  insertTitleDescription,
   createSVG,
-  draw,
+  drawMap,
+  colorScale,
 } from "./functions.js";
 import {
   topoURL_static,
   educationURL_static,
   topoURL,
   educationURL,
-  svgWidth,
-  svgHeight,
+  title,
+  description,
+  viewBox,
 } from "./variables.js";
 
 //get data
@@ -25,16 +28,16 @@ const states = convert(topoStatic, "states");
 const counties = convert(topoStatic, "counties").sort((a, b) => a.id - b.id);
 
 //define colorScale
-const scale = d3
-  .scaleSequential()
-  .domain(d3.extent(eduStatic.map((k) => k.bachelorsOrHigher)))
-  .interpolator(d3.interpolateCool);
+const scale = colorScale(eduStatic);
 
 //add education data to "counties" features collection, incl. scaled color
 combine(counties, eduStatic, scale);
 
+//insert title and description
+insertTitleDescription("#app", title, description);
+
 //create svg and draw geometries
-const svg = createSVG(svgWidth, svgHeight, topoStatic.bbox);
-draw(svg, nation, "nation");
-draw(svg, states, "state");
-draw(svg, counties, "county");
+const svg = createSVG(viewBox);
+drawMap(svg, nation, "nation");
+drawMap(svg, states, "state");
+drawMap(svg, counties, "county");

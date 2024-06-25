@@ -6,6 +6,10 @@ export const topoURL =
 export const educationURL_static = "./static/eduData_static.json";
 export const topoURL_static = "./static/countyData_static.json";
 
+//title, description
+export const title = "Higher education in the USA";
+export const description =
+  "percentage of county population in posession of bachelors degree or higher";
+
 //svg dimensions
-export const svgWidth = "75%";
-export const svgHeight = "75%";
+export const viewBox = "-150 -20 1100 650";
