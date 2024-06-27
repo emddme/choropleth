@@ -60,4 +60,4 @@ drawLegend(
   legendTexts,
   textOffset
 );
-d3.select("#app").append("h1").text("test test test");
+console.log("test test test")
