@@ -113,3 +113,16 @@ export const drawMap = (target, featuresCollection, collectionName) => {
     .attr("d", path)
     .style("fill", (d) => d.properties.color);
 };
+
+//draw, remove tooltip
+export const drawTooltip = (e) => {
+  console.log(e);
+}
+export const removeTooltip = (e) => {
+  // console.log(e);
+} 
+
+//add mouse events
+export const addEvents = (target, event, func) => {
+  selectAll(target).on(event, (e) => func(e));
+}

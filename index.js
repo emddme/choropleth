@@ -8,6 +8,9 @@ import {
   drawMap,
   colorScale,
   drawLegend,
+  addEvents,
+  drawTooltip,
+  removeTooltip
 } from "./functions.js";
 import {
   topoURL_static,
@@ -60,4 +63,7 @@ drawLegend(
   legendTexts,
   textOffset
 );
-console.log("test test test")
+
+//insert events
+addEvents("counties", "mouseover", drawTooltip);
+addEvents("counties", "mouseout", removeTooltip);
