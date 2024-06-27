@@ -124,5 +124,5 @@ export const removeTooltip = (e) => {
 
 //add mouse events
 export const addEvents = (target, event, func) => {
-  selectAll(target).on(event, (e) => func(e));
+  d3.selectAll(target).on(event, (e) => func(e));
 }

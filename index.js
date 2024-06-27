@@ -65,5 +65,5 @@ drawLegend(
 );
 
 //insert events
-addEvents("counties", "mouseover", drawTooltip);
-addEvents("counties", "mouseout", removeTooltip);
+addEvents(".county", "mouseover", drawTooltip);
+addEvents(".county", "mouseout", removeTooltip);
