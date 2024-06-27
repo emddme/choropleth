@@ -26,6 +26,8 @@ import {
   legendValues,
   legendTexts,
   textOffset,
+  tooltipWidth,
+  tooltipHeight,
 } from "./variables.js";
 
 //get data
@@ -65,5 +67,5 @@ drawLegend(
 );
 
 //insert events
-addEvents(".county", "mouseover", drawTooltip);
+addEvents(".county", "mouseover", drawTooltip(e, tooltipWidth, tooltipHeight));
 addEvents(".county", "mouseout", removeTooltip);

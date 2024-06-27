@@ -115,14 +115,14 @@ export const drawMap = (target, featuresCollection, collectionName) => {
 };
 
 //draw, remove tooltip
-export const drawTooltip = (e) => {
-  console.log(e);
+export const drawTooltip = (e, tooltipWidth, tooltipHeight ) => {
+  ßd3.select("#map").append("rect").attr("id", "tooltip").attr("width", tooltipWidth).attr("height", tooltipHeight).attr("x", e.target.clientX + 10).attr("y", e.target.clientY + 10).style("fill", "none").style("stroke", "black")
 }
 export const removeTooltip = (e) => {
-  // console.log(e);
+  d3.select(`#${e.target.__data__.id}`).remove();
 } 
 
 //add mouse events
 export const addEvents = (target, event, func) => {
-  d3.selectAll(target).on(event, (e) => func(e));
+  d3.selectAll(target).on(event, (e) => func(e, tooltipWidth, tooltipHeight));
 }

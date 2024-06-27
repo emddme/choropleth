@@ -13,6 +13,8 @@ export const description =
 
 //svg dimensions
 export const viewBox = "-150 -20 1100 650";
+export const tooltipWidth = 100;
+export const tooltipHeight = 100;
 
 //legend
 export const legendOffset = [-125, 25];
