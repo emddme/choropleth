@@ -113,3 +113,7 @@ export const drawMap = (target, featuresCollection, collectionName) => {
     .attr("d", path)
     .style("fill", (d) => d.properties.color);
 };
+
+//add event-listeners
+
+//draw tooltip
