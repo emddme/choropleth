@@ -105,7 +105,7 @@ export const drawMap = (target, featuresCollection, collectionName) => {
     .enter()
     .append("path")
     .classed(collectionName, true)
-    .attr("id", (d) => d.id)
+    .attr("id", (d) => `countyFips_${d.id}`)
     .attr("data-fips", (d) => d.properties.fips)
     .attr("state", (d) => d.properties.state)
     .attr("county", (d) => d.properties.county)
@@ -116,6 +116,7 @@ export const drawMap = (target, featuresCollection, collectionName) => {
 
 //draw, remove tooltip
 export const drawTooltip = (e, tooltipWidth, tooltipHeight ) => {
+  console.log(e);
   d3.select("#map").append("rect").attr("id", "tooltip").attr("width", tooltipWidth).attr("height", tooltipHeight).attr("x", e.target.clientX + 10).attr("y", e.target.clientY + 10).style("fill", "none").style("stroke", "black")
 }
 export const removeTooltip = (e) => {
