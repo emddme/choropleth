@@ -1,4 +1,3 @@
-import { tooltipOffsetX, tooltipOffsetY } from "./variables";
 
 //get static data (local)
 export const getStatic = async (URL) => {
