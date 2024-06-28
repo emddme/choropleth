@@ -27,6 +27,8 @@ import {
   textOffset,
   tooltipWidth,
   tooltipHeight,
+  tooltipOffsetX,
+  tooltipOffsetY,
 } from "./variables.js";
 
 //get data
@@ -66,7 +68,7 @@ drawLegend(
 );
 
 //mouse-event tooltip insertion
-d3.selectAll(".county").on("mouseover", (e) => drawTooltip(e, tooltipWidth, tooltipHeight));
+d3.selectAll(".county").on("mouseover", (e) => drawTooltip(e, tooltipWidth, tooltipHeight, tooltipOffsetX, tooltipOffsetY));
 
 //mouse-event tooltip removal
 d3.selectAll(".county").on("mouseout", (e) => removeTooltip(e));

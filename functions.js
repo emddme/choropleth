@@ -1,3 +1,5 @@
+import { tooltipOffsetX, tooltipOffsetY } from "./variables";
+
 //get static data (local)
 export const getStatic = async (URL) => {
   let data = null;
@@ -115,9 +117,9 @@ export const drawMap = (target, featuresCollection, collectionName) => {
 };
 
 //draw, remove tooltip
-export const drawTooltip = (e, tooltipWidth, tooltipHeight ) => {
+export const drawTooltip = (e, tooltipWidth, tooltipHeight, tooltipOffsetX, tooltipOffsetY ) => {
   console.log(e);
-  d3.select("#map").append("rect").attr("id", "tooltip").attr("width", tooltipWidth).attr("height", tooltipHeight).attr("x", e.x).attr("y", e.y).style("fill", "none").style("stroke", "black")
+  d3.select("#map").append("rect").attr("id", "tooltip").attr("width", tooltipWidth).attr("height", tooltipHeight).attr("x", e.x + tooltipOffsetX).attr("y", e.y + tooltipOffsetY).style("fill", "none").style("stroke", "black")
 }
 export const removeTooltip = (e) => {
   d3.select(`#tooltip`).remove();
