@@ -116,7 +116,7 @@ export const drawMap = (target, featuresCollection, collectionName) => {
 
 //draw, remove tooltip
 export const drawTooltip = (e, tooltipWidth, tooltipHeight ) => {
-  ßd3.select("#map").append("rect").attr("id", "tooltip").attr("width", tooltipWidth).attr("height", tooltipHeight).attr("x", e.target.clientX + 10).attr("y", e.target.clientY + 10).style("fill", "none").style("stroke", "black")
+  d3.select("#map").append("rect").attr("id", "tooltip").attr("width", tooltipWidth).attr("height", tooltipHeight).attr("x", e.target.clientX + 10).attr("y", e.target.clientY + 10).style("fill", "none").style("stroke", "black")
 }
 export const removeTooltip = (e) => {
   d3.select(`#${e.target.__data__.id}`).remove();
