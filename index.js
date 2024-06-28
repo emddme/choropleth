@@ -8,7 +8,6 @@ import {
   drawMap,
   colorScale,
   drawLegend,
-  addEvents,
   drawTooltip,
   removeTooltip
 } from "./functions.js";
@@ -66,6 +65,8 @@ drawLegend(
   textOffset
 );
 
-//insert events
-addEvents(".county", "mouseover", drawTooltip);
-addEvents(".county", "mouseout", removeTooltip);
+//mouse-event tooltip insertion
+d3.selectAll(".county").on("mouseover", (e) => drawTooltip(e, tooltipWidth, tooltipHeight));
+
+//mouse-event tooltip removal
+d3.selectAll(".county").on("mouseout", (e) => removeTooltip(e));

@@ -120,9 +120,4 @@ export const drawTooltip = (e, tooltipWidth, tooltipHeight ) => {
 }
 export const removeTooltip = (e) => {
   d3.select(`#${e.target.__data__.id}`).remove();
-} 
-
-//add mouse events
-export const addEvents = (target, event, func) => {
-  d3.selectAll(target).on(event, (e) => func(e, tooltipWidth, tooltipHeight));
 }
