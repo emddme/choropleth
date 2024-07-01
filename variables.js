@@ -11,8 +11,10 @@ export const title = "Higher education in the USA";
 export const description =
   "percentage of county population in posession of bachelors degree or higher";
 
-//svg dimensions
+//svg
 export const viewBox = "-150 -20 1100 650";
+
+//tooltip
 export const tooltipOffsetX = -150;
 export const tooltipOffsetY = -20;
 export const tooltipWidth = 100;
