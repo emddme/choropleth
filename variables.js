@@ -14,12 +14,6 @@ export const description =
 //svg
 export const viewBox = "-150 -20 1100 650";
 
-//tooltip
-export const tooltipWidth = 150;
-export const tooltipHeight = 50;
-export const tooltipFill = "black";
-export const tooltipOpacity = "50%";
-
 //legend
 export const legendOffset = [-125, 25];
 export const blockOffset = [0, 35];

@@ -8,16 +8,17 @@ const drawTooltip = (e) => {
   const meanX = e.target.__data__.properties.meanXY[0];
   const meanY = e.target.__data__.properties.meanXY[1];
   const rx = "0.5%";
-  if (meanX > 450) {
+  if (meanX > 700) {
     tooltipX = meanX - tooltipWidth - tooltipMargin;
   } else {
     tooltipX = meanX + tooltipMargin;
   }
-  if (meanY > 250) {
+  if (meanY > 120) {
     tooltipY = meanY - tooltipHeight - tooltipMargin;
   } else {
     tooltipY = meanY + tooltipMargin;
   }
+
   d3.select("#map")
     .append("rect")
     .attr("id", "tooltip")
@@ -31,8 +32,8 @@ const drawTooltip = (e) => {
   const props = e.target.__data__.properties;
   const content = [
     `${props.county}, ${props.state}`,
-    `fips code ${props.fips}`,
-    `${props.bachelorsOrHigher} percent`,
+    `fips code: ${props.fips}`,
+    `higher ed: ${props.bachelorsOrHigher} %`,
   ];
   const margin = 10;
   const lineHeight = 22;

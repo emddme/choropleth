@@ -7,20 +7,25 @@
     format("variable");
 }
 body {
-  width: 100%;
-  margin: 0;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
   background-color: #b4c3db;
 }
 #app {
+  width: 100vw;
   font: 1vw Source Code Pro;
   display: flex;
   flex-direction: column;
   justify-content: center;
   align-items: center;
 }
-#map {
-  padding: 1%;
+#title,
+#description {
+  margin: 0.4%;
 }
+
 #nation,
 .county,
 .state {
