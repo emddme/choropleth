@@ -12,7 +12,6 @@ body {
   background-color: #b4c3db;
 }
 #app {
-  max-width: 100%;
   font: 1vw Source Code Pro;
   display: flex;
   flex-direction: column;
@@ -20,7 +19,6 @@ body {
   align-items: center;
 }
 #map {
-  max-width: 100%;
   padding: 1%;
 }
 #nation,
@@ -29,4 +27,14 @@ body {
   fill: none;
   stroke: black;
   stroke-width: 0.25;
+}
+#legend {
+  font-size: 0.8vh;
+}
+#tooltip {
+  stroke: #92abd4;
+  fill: #92abd4;
+}
+.tooltipText {
+  font: 0.75vw Source Code Pro;
 }

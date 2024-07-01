@@ -7,7 +7,7 @@ const drawCounties = (target, featuresCollection) => {
     .append("path")
     .classed("county", true)
     .attr("d", path)
-    .attr("id", (d) => d.id)
+    .attr("id", (d) => `id_${d.id}`)
     .attr("data-fips", (d) => d.properties.fips)
     .attr("state", (d) => d.properties.state)
     .attr("county", (d) => d.properties.county)

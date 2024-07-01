@@ -9,24 +9,24 @@ export const topoURL_static = "./static/countyData_static.json";
 //title, description
 export const title = "Higher education in the USA";
 export const description =
-  "percentage of county population in posession of bachelors degree or higher";
+  "percentage of county population in posession of a bachelors degree or higher";
 
 //svg
 export const viewBox = "-150 -20 1100 650";
 
 //tooltip
-export const tooltipOffsetX = -150;
-export const tooltipOffsetY = -20;
-export const tooltipWidth = 100;
-export const tooltipHeight = 100;
+export const tooltipWidth = 150;
+export const tooltipHeight = 50;
+export const tooltipFill = "black";
+export const tooltipOpacity = "50%";
 
 //legend
 export const legendOffset = [-125, 25];
-export const rectOffset = [0, 35];
-export const rectSize = 10;
-export const legendValues = [6, 15, 25, 35, 45, 55, 65, 72.5];
-export const textOffset = [7.5, 15, 35];
-export const legendTexts = [
+export const blockOffset = [0, 35];
+export const blockSize = 10;
+export const blockValues = [6, 15, 25, 35, 45, 55, 65, 72.5];
+export const textOffset = [8.5, 15, 35];
+export const blockTexts = [
   "2.6 < % < 10",
   "10 < % < 20",
   "20 < % < 30",

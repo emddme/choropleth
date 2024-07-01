@@ -7,20 +7,17 @@ import {
   description,
   viewBox,
   legendOffset,
-  rectOffset,
-  rectSize,
-  legendValues,
-  legendTexts,
+  blockOffset,
+  blockSize,
+  blockValues,
+  blockTexts,
   textOffset,
-  tooltipWidth,
-  tooltipHeight,
-  tooltipOffsetX,
-  tooltipOffsetY,
 } from "./variables.js";
 import colorScale from "./functions/colorScale.js";
 import combine from "./functions/combine.js";
 import convert from "./functions/convert.js";
 import createSVG from "./functions/createSVG.js";
+import deHighlight from "./functions/deHighlight.js";
 import drawCounties from "./functions/drawCounties.js";
 import drawLegend from "./functions/drawLegend.js";
 import drawNation from "./functions/drawNation.js";
@@ -28,6 +25,7 @@ import drawStates from "./functions/drawStates.js";
 import drawTooltip from "./functions/drawTooltip.js";
 import fetchData from "./functions/fetchData.js";
 import getStatic from "./functions/getStatic.js";
+import highlight from "./functions/highlight.js";
 import insertTitleDescription from "./functions/insertTitleDescription.js";
 import removeTooltip from "./functions/removeTooltip.js";
 
@@ -57,20 +55,23 @@ drawCounties("#map", counties);
 
 //insert legend
 drawLegend(
-  "#map",
-  legendOffset,
-  rectOffset,
-  rectSize,
   scale,
-  legendValues,
-  legendTexts,
+  legendOffset,
+  blockOffset,
+  blockSize,
+  blockValues,
+  blockTexts,
   textOffset
 );
 
 //mouse-event tooltip insertion
-d3.selectAll(".county").on("mouseover", (e) =>
-  drawTooltip(e, tooltipWidth, tooltipHeight)
-);
+d3.selectAll(".county").on("mouseover", (e) => {
+  drawTooltip(e);
+  highlight(e);
+});
 
 //mouse-event tooltip removal
-d3.selectAll(".county").on("mouseout", (e) => removeTooltip(e));
+d3.selectAll(".county").on("mouseout", (e) => {
+  removeTooltip(e);
+  deHighlight(e);
+});

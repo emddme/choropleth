@@ -7,6 +7,6 @@ const drawStates = (target, featuresCollection) => {
     .append("path")
     .classed("state", true)
     .attr("d", path)
-    .attr("id", (d) => d.id);
+    .attr("id", (d) => `id_${d.id}`);
 };
 export default drawStates;
