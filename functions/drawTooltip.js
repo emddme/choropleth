@@ -26,7 +26,8 @@ const drawTooltip = (e) => {
     .attr("height", tooltipHeight)
     .attr("rx", rx)
     .attr("x", tooltipX)
-    .attr("y", tooltipY);
+    .attr("y", tooltipY)
+    .attr("data-education", e.target.attributes["data-education"].nodeValue);
 
   //tooltip content
   const props = e.target.__data__.properties;
